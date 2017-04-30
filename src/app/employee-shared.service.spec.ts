@@ -4,14 +4,12 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs';
 
 import { EmployeeService } from './employee.service';
-import { EmployeeSearchService } from './employee-search/employee-search.service';
 import { EmployeeSharedService } from './employee-shared.service';
 import { Employee } from './employee';
 
 let mockBackend: MockBackend;
 let employeeService: EmployeeService;
 let employeeSharedService: EmployeeSharedService;
-let employeeSearchService: EmployeeSearchService;
 
 let mockEmployee: Employee = <Employee>{
   empId: 1,
@@ -78,7 +76,6 @@ describe('EmployeeSharedService', () => {
     TestBed.configureTestingModule({
       providers: [
         EmployeeService,
-        EmployeeSearchService,
         EmployeeSharedService,
         MockBackend,
         BaseRequestOptions,
@@ -91,10 +88,10 @@ describe('EmployeeSharedService', () => {
     });
   });
 
-  beforeEach(inject([ MockBackend, EmployeeService, EmployeeSearchService, Http ],
-    (mb: MockBackend, empService: EmployeeService, empSearchService: EmployeeSearchService, http: Http) => {
+  beforeEach(inject([ MockBackend, EmployeeService, Http ],
+    (mb: MockBackend, empService: EmployeeService, http: Http) => {
       mockBackend = mb;
-      employeeSharedService = new EmployeeSharedService(empService, empSearchService);
+      employeeSharedService = new EmployeeSharedService(empService);
     })
   );
 

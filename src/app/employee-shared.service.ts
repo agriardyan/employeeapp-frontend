@@ -2,7 +2,6 @@ import {Injectable, OnInit} from '@angular/core';
 import {Employee} from "./employee";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-import {EmployeeSearchService} from "./employee-search/employee-search.service";
 import {EmployeeService} from './employee.service';
 
 @Injectable()
@@ -14,7 +13,7 @@ export class EmployeeSharedService implements  OnInit{
 
   query: string;
 
-  constructor(private employeeService:EmployeeService, private employeSearchService:EmployeeSearchService) { }
+  constructor(private employeeService:EmployeeService) { }
 
   ngOnInit(): void {
   }
