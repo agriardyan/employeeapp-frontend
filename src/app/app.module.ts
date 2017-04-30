@@ -38,8 +38,7 @@ import { AuthenticationService } from './authentication.service';
     AuthGuard,
     AlertService,
     AuthenticationService,
-    EmployeeService,
-    EmployeeSearchService
+    EmployeeService
   ],
   bootstrap: [AppComponent]
 })
