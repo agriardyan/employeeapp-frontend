@@ -1,0 +1,63 @@
+
+/*counter badge showing num of list size*/
+#counterBadge {
+  background-color: lightgray;
+  color: black;
+}
+
+/* searchbar */
+#searchbar > ul > li > a > i {
+  cursor: pointer !important;
+}
+
+#formSearch {
+  float: left;
+}
+
+/*fab*/
+/*#fabAddEmployee:active {
+  background-color: red;
+}
+
+#fabAddEmployee:hover {
+  background-color: red;
+}*/
+
+.alert-info {
+  background-color: #EEEEEE !important;
+  color: black !important;
+}
+
+.scrollable-list {
+    height: auto;
+    max-height: 75vh;
+    overflow-x: hidden;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    position: fixed;
+    left: 25%;
+    z-index: 1000;
+    bottom: 8%;
+}
+
+
+/* nav tabs */
+@media (max-width: 768px) {
+  .navbar-nav > li {
+    display: table-cell;
+    width: 1%;
+  }
+  .navbar-nav > li > a  {
+    /*border-bottom: 1px solid #ddd !important;*/
+    border-radius: 4px 4px 0 0 !important;
+    margin-bottom: 0 !important;
+  }
+  /*.nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+    border-bottom-color: #fff !important;
+  }*/
+}

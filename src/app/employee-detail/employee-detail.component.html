@@ -1,0 +1,176 @@
+<div class="col-md-8">
+  <div>
+    <ul class="nav nav-tabs nav-justified py-0" id="navInverse">
+      <li class="py-3 active"><a href="#tab-1" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i></a>
+      </li>
+      <li class="py-3"><a href="#tab-2" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-repeat"></i></a></li>
+      <li class="py-3"><a href="#tab-3" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-folder-open"></i></a>
+      </li>
+      <li class="py-3"><a href="#tab-4" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-folder-open"></i></a>
+      </li>
+      <li class="py-3"><a href="#tab-5" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-knight"></i></a></li>
+      <li class="py-3"><a href="#tab-6" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-map-marker"></i></a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active h-100" role="tabpanel" id="tab-1">
+        <form class="well px-5 pt-1 scrollable-detail" *ngIf="selectedEmployee" [formGroup]="employeeForm" novalidate>
+          <div class="row py-2">
+            <div class="col-md-5">
+              <!--<form class="bootstrap-form-with-validation">-->
+
+              <input type="hidden" id="empId" name="empId" formControlName="empId" value="{{selectedEmployee.empId}}">
+
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="firstName">First Name</label>
+                <input class="form-control my-0" type="text" id="firstName" name="firstName" formControlName="firstName" value="{{selectedEmployee.firstName}}" required>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="lastName">Last Name</label>
+                <input class="form-control my-0" type="text" id="lastName" name="lastName" formControlName="lastName" value="{{selectedEmployee.lastName}}" required>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="gender">Gender</label>
+                <!--<input class="form-control my-0" type="text" id="gender" name="gender" formControlName="gender" value="{{selectedEmployee.gender}}" required>-->
+                <select class="form-control" name="gender" id="gender" formControlName="gender" *ngIf="genders && selectedEmployee" required>
+                  <option *ngFor="let g of genders" [value]="g.gender" [selected]="selectedEmployee.gender == g.gender">{{g.gender}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="dateOfBirth">Date of Birth</label>
+                <input class="form-control my-0" type="date" id="dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth" value="{{selectedEmployee.dateOfBirth}}" required>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="nationality">Nationality</label>
+                <!--<input class="form-control my-0" type="text" id="nationality" name="nationality" formControlName="nationality" value="{{selectedEmployee.nationality}}" required>-->
+                <select class="form-control" name="nationality" id="nationality" formControlName="nationality" *ngIf="nationalities && selectedEmployee" required>
+                  <option *ngFor="let n of nationalities" [value]="n.nationality" [selected]="selectedEmployee.nationality == n.nationality">{{n.nationality}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="maritalStatus">Marital Status</label>
+                <!--<input class="form-control my-0" type="text" id="maritalStatus" name="maritalStatus" formControlName="maritalStatus" value="{{selectedEmployee.maritalStatus}}" required>-->
+                <select class="form-control" name="maritalStatus" id="maritalStatus" formControlName="maritalStatus" *ngIf="maritalStatuses && selectedEmployee" required>
+                  <option *ngFor="let m of maritalStatuses" [value]="m.maritalStatus" [selected]="selectedEmployee.maritalStatus == m.maritalStatus">{{m.maritalStatus}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="phone">Phone</label>
+                <input class="form-control my-0" type="text" id="phone" name="phone" formControlName="phone" value="{{selectedEmployee.phone}}">
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="email">Email</label>
+                <input class="form-control my-0" type="text" id="email" name="email" formControlName="email" value="{{selectedEmployee.email}}" required>
+              </div>
+              
+              <!--</form>-->
+            </div>
+            <div class="col-md-5">
+              <!--<form class="bootstrap-form-with-validation">-->
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="subDivision">Sub Division</label>
+                <!--<input class="form-control my-0" type="text" id="subDivision" name="subDivision" formControlName="subDivision" value="{{selectedEmployee.subDivision}}" required>-->
+                <select class="form-control" name="subDivision" id="subDivision" formControlName="subDivision" *ngIf="subDivisions && selectedEmployee" required>
+                  <option *ngFor="let s of subDivisions" [value]="s.subDivision" [selected]="selectedEmployee.subDivision == s.subDivision">{{s.subDivision}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="status">Status</label>
+                <!--<input class="form-control my-0" type="text" id="status" name="status" formControlName="status" value="{{selectedEmployee.status}}" required>-->
+                <select class="form-control" name="status" id="status" formControlName="status" *ngIf="statuses && selectedEmployee" required>
+                  <option *ngFor="let s of statuses" [value]="s.status" [selected]="selectedEmployee.status == s.status">{{s.status}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="suspendDate">Suspend Date</label>
+                <input class="form-control my-0" type="date" id="suspendDate" name="suspendDate" formControlName="suspendDate" value="{{selectedEmployee.suspendDate}}">
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="hiredDate">Hired Date</label>
+                <input class="form-control my-0" type="date" id="hiredDate" name="hiredDate" formControlName="hiredDate" value="{{selectedEmployee.hiredDate}}" required>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="grade">Grade</label>
+                <!--<input class="form-control my-0" type="text" id="grade" name="grade" formControlName="grade" value="{{selectedEmployee.grade}}" required>-->
+                <select class="form-control" name="grade" id="grade" formControlName="grade" *ngIf="grades && selectedEmployee" required>
+                  <option *ngFor="let g of grades" [value]="g.grade" [selected]="selectedEmployee.grade == g.grade">{{g.grade}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="division">Division</label>
+                <!--<input class="form-control my-0" type="text" id="division" name="division" formControlName="division" value="{{selectedEmployee.division}}" required>-->
+                <select class="form-control" name="division" id="division" formControlName="division" *ngIf="divisions && selectedEmployee" required>
+                  <option *ngFor="let d of divisions" [value]="d.division" [selected]="selectedEmployee.division == d.division">{{d.division}}</option>
+                </select>
+              </div>
+              <div class="form-group is-empty my-0">
+                <label class="control-label" for="city">City</label>
+                <!--<input class="form-control my-0" type="text" id="city" name="city" formControlName="city" value="{{selectedEmployee.city}}">-->
+                <select class="form-control" name="city" id="city" formControlName="city" *ngIf="cities && selectedEmployee" required>
+                  <option *ngFor="let c of cities" [value]="c.cityId" [selected]="selectedEmployee.city && selectedEmployee.city.cityId && selectedEmployee.city.cityId == c.cityId">{{c.city}}</option>
+                </select>
+              </div>
+              <!--</form>-->
+            </div>
+
+            <div class="col-md-2 py-3">
+              <img class="img-circle img-responsive" [src]="selectedEmployee.profilePicture ? selectedEmployee.profilePicture : 'assets/img/profile-default.jpg'">
+              
+              <input type="hidden" id="profilePicture" name="profilePicture" formControlName="profilePicture" value="{{selectedEmployee.profilePicture}}">
+
+              <div class="form-group is-empty my-0">
+                <input type="file" accept="image/x-png,image/gif,image/jpeg" name="profilePic" id="profilePic" (change)="fileChange($event)">
+                <span class="input-group-btn input-group-sm">
+                  <button type="button" class="btn btn-fab btn-fab-mini">
+                    <i class="glyphicon glyphicon-camera" style="display: inline !important;"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+        <!--<p>Form value: {{ employeeForm.value | json }}</p>-->
+
+        <div class="col-md-12" id="footerBar"> <!--footer panel-->
+          <div class="col-md-8"></div>
+          <div class="col-md-4">
+            <div class="col-md-6">
+              <button class="btn btn-raised btn-default" (click)="resetFormValue()" [disabled]="employeeForm.pristine">Cancel</button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-raised btn-danger" *ngIf="selectedEmployee" (click)="saveUpdateEmployee()" [disabled]="employeeForm.pristine || !employeeForm.valid">{{selectedEmployee.empId != null ? 'Update' : 'Save'}}</button>
+            </div>
+          </div>
+        </div>  <!--end of footer panel-->
+
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-2">
+        <div class="well">
+          <p>Second tab content.</p>
+        </div>
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-3">
+        <div class="well">
+          <p>Third tab content.</p>
+        </div>
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-4">
+        <div class="well">
+          <p>Fourth tab content.</p>
+        </div>
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-5">
+        <div class="well">
+          <p>Fifth tab content.</p>
+        </div>
+      </div>
+      <div class="tab-pane" role="tabpanel" id="tab-6">
+        <div class="well">
+          <p>Sixth tab content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

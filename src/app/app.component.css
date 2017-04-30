@@ -1,0 +1,12 @@
+label {
+  color: #000000 !important;
+}
+
+.scrollable-list-container {
+  height: 100%;
+  overflow: auto;
+}
+
+.scrollable-list {
+  overflow-y: scroll;
+}

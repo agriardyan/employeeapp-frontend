@@ -1,0 +1,56 @@
+/*inversed nav (blue justified nav)*/
+#navInverse {
+  background-color: #3f51b5 !important;
+}
+
+#navInverse > .active {
+  border-bottom: solid 5px !important;
+  border-bottom-color: white !important;
+}
+
+/*footer bar*/
+#footerBar {
+  background-color: #3f51b5 !important;
+  position: static;
+}
+
+label {
+  color: black !important;
+}
+
+.scrollable-detail {
+    height: auto;
+    max-height: 65vh;
+    overflow-x: hidden;
+}
+
+
+/* tabs justified */
+@media (max-width: 768px) {
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+  .nav-justified > li > a  {
+    /*border-bottom: 1px solid #ddd !important;*/
+    border-radius: 4px 4px 0 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .nav-tabs.nav-justified > .active > a,
+  .nav-tabs.nav-justified > .active > a:hover,
+  .nav-tabs.nav-justified > .active > a:focus {
+    border-bottom-color: #fff !important;
+  }
+}
+
+/*@media (max-width: 768px) {
+  .nav-justified > li {
+    display: table-cell;
+    width: 1%;
+  }
+  .nav-justified > li > a  {
+    border-bottom: 1px solid #ddd !important;
+    border-radius: 4px 4px 0 0 !important;
+    margin-bottom: 0 !important;
+  }
+}*/

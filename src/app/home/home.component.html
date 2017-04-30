@@ -1,0 +1,58 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand navbar-link" id="hamburger-opener" href="#" data-toggle="collapse"
+         data-target=".collapsible-list">
+        <i class="glyphicon glyphicon-menu-hamburger"></i>
+      </a>
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    </div>
+    <div class="collapse navbar-collapse" id="navcol-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <!--<div class="container">
+            
+          </div>-->
+
+          <!--<img class="img-circle img-responsive" src="assets/img/profile-default.jpg">-->
+
+          <a href="#" class="py-3">
+            <div class="row py-0 px-0">
+              <div class="col-md-3 py-0 hidden-xs">
+                <img class="img-circle img-responsive col-xs-12" src="assets/img/profile-default.jpg">
+              </div>
+              <div class="col-md-5 py-0">
+                <p class="p-0 mb-0"><strong>Name</strong></p>
+                <p class="p-0 mb-0">Grade</p>
+              </div>
+            </div>
+            <!--<img class="img-circle img-responsive" src="assets/img/profile-default.jpg">-->
+          </a>
+        </li>
+        <!--<li role="presentation"><a href="#">Second Item</a></li>
+        <li role="presentation"><a href="#">Third Item</a></li>
+        <li role="presentation"><a href="#">Second Item</a></li>
+        <li role="presentation"><a href="#">Second Item</a></li>-->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation"><a href="#"><i class="glyphicon glyphicon-wrench"></i></a></li>
+        <li role="presentation"><a [routerLink]="['/login']"><i class="glyphicon glyphicon-off"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="py-0">
+  <div class="container-fluid">
+    <div class="row">
+      <employee-list></employee-list>
+
+      <div id="menu-div" class="collapsible-list col-md-4 hidden-sm hidden-xs"></div>
+
+      <employee-detail></employee-detail>
+    </div>
+  </div>
+</div>
+
+

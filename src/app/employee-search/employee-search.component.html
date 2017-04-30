@@ -1,0 +1,52 @@
+
+<div class="panel-heading p-0 bb-0">
+  <div class="navbar navbar-inverse mb-0">
+    <div class="container-fluid mx-0 px-0">
+      <div class="navbar-header">
+      </div>
+      <div class="navbar-collapse collapse pl-0" id="searchbar">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" (click)="toggleSort()">
+              <i [ngClass]="sortAsc ? 'glyphicon glyphicon-sort-by-attributes-alt' : 'glyphicon glyphicon-sort-by-attributes'"></i>
+
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">
+              <i class="glyphicon glyphicon-filter"></i>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Location</a></li>
+              <li><a href="#">Gender</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">
+              <span class="badge" id="counterBadge" *ngIf="employees">{{employees.length}}</span>
+            </a>
+          </li>
+        </ul>
+
+        <form class="navbar-form">
+          <div class="form-group" style="display:inline;">
+            <div class="input-group" style="display:table;">
+                        <span class="input-group-addon" style="width:1%;"><span
+                          class="glyphicon glyphicon-search"></span></span>
+              <input class="form-control" name="search" placeholder="Search Here" autocomplete="off"
+                     autofocus="autofocus" type="text">
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+</div> <!-- end of panel-head -->

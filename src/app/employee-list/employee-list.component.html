@@ -1,0 +1,142 @@
+<div class="collapsible-list col-md-4 collapse in" id="employee-list">
+
+  <div class="panel panel-inverse">
+
+    <div class="panel-heading p-0">
+      <div class="navbar navbar-inverse mb-0">
+        <div class="container-fluid mx-0 px-0">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#searchbarnav"><span class="sr-only">Toggle navigation</span><span
+        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+          </div>
+          <div class="navbar-collapse collapse pl-0" id="searchbarnav">
+            <ul class="nav navbar-nav navbar-right">
+              <li *ngIf="selectedEmployee">
+                <a href="#" data-toggle="modal" data-target="#modalDelete">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" (click)="toggleSort()">
+                  <i [ngClass]="sortAsc ? 'glyphicon glyphicon-sort-by-attributes-alt' : 'glyphicon glyphicon-sort-by-attributes'"></i>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false">
+                  <i class="glyphicon glyphicon-filter"></i>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" onclick="promptFilterBoxLocation()">Location</a></li>
+                  <li><a href="#" onclick="promptFilterBoxGender()">Gender</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="badge" id="counterBadge" *ngIf="employees">{{employees.length}}</span>
+                </a>
+              </li>
+            </ul>
+
+
+            <form class="navbar-form pl-0" id="formSearch">
+              <div class="form-group">
+                <div class="input-group">
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-search"></span>
+                        </span>
+                  <input #searchBox class="form-control" name="search" placeholder="Search Here" autocomplete="off"
+                         autofocus="autofocus" type="text" (keyup)="search(searchBox.value)">
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </div>
+    </div> <!-- end of panel-head -->
+
+
+    <div class="panel-body px-0 pt-0">
+
+      <!--start of filter by location-->
+      <div class="alert alert-dismissible alert-info mb-0 pb-0" id="filterBoxLocation">
+        <button type="button" class="close" onclick="hidePromptFilterBoxes()">×</button>
+        <div class="row px-5"> <strong>Filter by Location</strong> </div>
+        <div class="row px-5">
+          <div class="form-group is-empty my-0">
+            <select class="form-control" (change)="filterLocation($event.target.value)">
+              <option value="0">All</option>
+              <option *ngFor="let c of cities" [value]="c.cityId">{{c.city}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!--end of filter by location-->
+
+      <!--start of filter by gender-->
+      <div class="alert alert-dismissible alert-info mb-0 pb-0" id="filterBoxGender">
+        <button type="button" class="close" onclick="hidePromptFilterBoxes()">×</button>
+        <div class="row px-5"> <strong>Filter by Gender</strong> </div>
+        <div class="row px-5">
+          <div class="form-group is-empty my-0">            
+            <select class="form-control" (change)="filterGender($event.target.value)">
+              <option value="0">All</option>
+              <option *ngFor="let g of genders" [value]="g.gender">{{g.gender}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!--end of filter by gender-->
+
+      <div class="col-md-12 w-100 scrollable-list">
+        <!--floating action button-->
+
+        <div class="vcenter">
+            <a href="#" class="btn btn-danger btn-fab" id="fabAddEmployee" (click)="prepareNewEmployee()"><i class="material-icons">grade</i></a>
+        </div>
+
+        <div class="row py-2 bordered-row" *ngFor="let employee of employees"
+             [class.active]="employee === selectedEmployee" (click)="selectEmployee(employee)"> <!-- loop here -->
+          <div class="col-md-3 col-xs-3">
+            <img class="img-circle img-responsive" [src]="employee.profilePicture ? employee.profilePicture : 'assets/img/profile-default.jpg'">
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <p class="my-1"><strong>{{employee.firstName}} {{employee.lastName}}</strong></p>
+            <p class="my-1">{{employee.grade}}, {{employee.division}}</p>
+            <p class="my-1">
+              <small>{{employee.city.city}}, {{employee.phone}}</small>
+            </p>
+          </div>
+          <div class="col-md-3 col-xs-3">
+            <p>{{employee.hiredDate}}</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div> <!-- end of panel -->
+</div>
+
+<div class="modal fade p-3" id="modalDelete" role="dialog" *ngIf="selectedEmployee">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Delete Employee</h4>
+        <h5 class="modal-subtitle">Are you sure want to delete {{selectedEmployee.firstName}} {{selectedEmployee.lastName}}</h5>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+        <p>One fine body…</p>
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal" (click)="deleteEmployee(selectedEmployee)">Delete</button>
+        <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

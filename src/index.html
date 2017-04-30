@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>employeeapp</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+  <!--USING CDN-->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" href="assets/css/misc_styles.css">
+  <link rel="stylesheet" href="assets/css/custom-scrollbar.css">
+  <link rel="stylesheet" href="assets/css/alignment-placement.css">
+
+  <!-- Material Design fonts -->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+
+  <!-- Bootstrap Material Design -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap-material-design.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/ripples.min.css">
+
+  <!--<script src="./assets/js/jquery-3.2.1.min.js"></script>-->
+  <!--<script src="./assets/js/bootstrap.min.js"></script>-->
+
+  <script src="./assets/js/ripples.min.js"></script>
+  <script src="./assets/js/material.min.js"></script>
+
+</head>
+
+<body>
+  <app-root>Loading...</app-root>
+
+
+  <script>
+    $.material.init();
+
+    $().ready(function () {
+      //  $('.alert').hide();
+      $("#filterBoxGender").hide();
+      $("#filterBoxLocation").hide();
+    });
+
+    function promptFilterBoxGender() {
+      $("#filterBoxGender").show();
+      $("#filterBoxLocation").hide();
+    }
+
+    function promptFilterBoxLocation() {
+      $("#filterBoxGender").hide();
+      $("#filterBoxLocation").show();
+      
+    }
+
+    function hidePromptFilterBoxes() {
+      $("#filterBoxGender").hide();
+      $("#filterBoxLocation").hide();
+    }
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+body {
+  overflow: hidden;
+}
+
+.bordered-row {
+  /*border-bottom: 1px solid gray !important;*/
+  /*border-bottom-color: gray !important;*/
+  cursor: pointer;
+}
+
+.bordered-row:hover,
+.bordered-row:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: lightgray;
+  border-color: lightgray;
+}
+
+.bordered-row.active,
+.bordered-row.active:hover,
+.bordered-row.active:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
+ /*ROW (LIST OF EMPLOYEE)*/
+#hamburger-opener:hover > .hidable-row {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+}
+
+.hidable-row {
+  -webkit-transform-origin: top;
+  transform-origin: top;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-transform: scale(1, 0);
+  display: block;
+
+  transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+}
+
+ /*TEXT*/
+.text-bold {
+  font-weight: bold;
+}
+
+/*IMAGE RELATED*/
+.thumbnail > i {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: -30px;
+}
+
+
