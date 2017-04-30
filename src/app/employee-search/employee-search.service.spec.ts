@@ -3,14 +3,10 @@ import { BaseRequestOptions, Http, RequestMethod, ResponseOptions, Response } fr
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from 'rxjs';
 
-import { EmployeeService } from './employee.service';
-import { EmployeeSearchService } from './employee-search/employee-search.service';
-import { EmployeeSharedService } from './employee-shared.service';
-import { Employee } from './employee';
+import { EmployeeSearchService } from './employee-search.service';
+import { Employee } from '../employee';
 
 let mockBackend: MockBackend;
-let employeeService: EmployeeService;
-let employeeSharedService: EmployeeSharedService;
 let employeeSearchService: EmployeeSearchService;
 
 let mockEmployee: Employee = <Employee>{
@@ -72,14 +68,12 @@ let mockEmployee3: Employee = <Employee>{
 
 let mockEmployeesArray: Array<Employee> = [ mockEmployee, mockEmployee2, mockEmployee3 ];
 
-describe('EmployeeSharedService', () => {
+describe('EmployeeSearchService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        EmployeeService,
         EmployeeSearchService,
-        EmployeeSharedService,
         MockBackend,
         BaseRequestOptions,
         {
@@ -91,16 +85,35 @@ describe('EmployeeSharedService', () => {
     });
   });
 
-  beforeEach(inject([ MockBackend, EmployeeService, EmployeeSearchService, Http ],
-    (mb: MockBackend, empService: EmployeeService, empSearchService: EmployeeSearchService, http: Http) => {
+  beforeEach(inject([ MockBackend, Http ],
+    (mb: MockBackend, http: Http) => {
       mockBackend = mb;
-      employeeSharedService = new EmployeeSharedService(empService, empSearchService);
+      employeeSearchService = new EmployeeSearchService(http);
     })
   );
 
   it('should exist', () => {
-    expect(employeeSharedService).toBeTruthy();
+    expect(employeeSearchService).toBeTruthy();
   });
+
+  // it('should return the employees array that match search query', (done) => {
+
+  //   let term = 'john';
+
+  //   mockBackend.connections.subscribe((connection: MockConnection) => {
+  //     expect(connection.request.method).toEqual(RequestMethod.Get);
+  //     expect(connection.request.url).toEqual(`api/employee/search?name=${term}`);
+  //     connection.mockRespond(new Response(new ResponseOptions({
+  //       body: {data : mockEmployee}
+  //     })));
+  //   });
+
+  //   employeeSearchService.search(term).map(response => {
+  //     expect(response).toEqual({data:mockEmployee});
+  //     done();
+  //   });
+
+  // });
 
 });
 
